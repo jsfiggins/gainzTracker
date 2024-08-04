@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const { expressjwt } = require('express-jwt');
 require('dotenv').config();
-const path = require ('path')
+const path = require ('path');
 
 app.use(express.json()); // looks for a request body then turns it into 'req.body'
 app.use(morgan('dev')); // Logs requests to the console 
