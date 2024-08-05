@@ -8,7 +8,7 @@ const path = require ('path');
 
 app.use(express.json()); // looks for a request body then turns it into 'req.body'
 app.use(morgan('dev')); // Logs requests to the console 
-app.use(express.static(path.join(_dirname,"client","dist")))
+app.use(express.static(path.join(__dirname,"client","dist")))
 
 async function connectToDb() {
     try {
@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
     res.status(500).send({ errMsg: err.message });
 });
 
-app.get("*",(req,res)=> res.sendFile(path.join(_dirname,"client","dist","index.html")))
+app.get("*",(req,res)=> res.sendFile(path.join(__dirname,"client","dist","index.html")))
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
