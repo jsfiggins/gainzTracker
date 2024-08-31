@@ -10,7 +10,7 @@ const WorkoutCard = ({ workout, deleteWorkout }) => {
         {exercises.map((exercise, index) => (
           <li key={index}>
             <h3>{exercise.name}</h3>
-            <p>Rest Time: {exercise.restTime}</p>
+           
             <p>Notes: {exercise.notes}</p>
             <ul>
               {exercise.sets.map((set, setIndex) => (

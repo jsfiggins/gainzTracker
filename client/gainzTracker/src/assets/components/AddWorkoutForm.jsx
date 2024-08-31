@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { WorkoutContext } from '../context/WorkoutContext';
 
 export default function AddWorkoutForm() {
-  const initialExercise = { name: '', sets: [{ setCount: 1, reps: '', weight: '' }], restTime: '', notes: '' };
+  const initialExercise = { name: '', sets: [{ setCount: '', reps: '', weight: '' }], notes: '' };
   const initialWorkout = { date: '', exercises: [initialExercise] };
   const [workout, setWorkout] = useState(initialWorkout);
   const { addWorkout } = useContext(WorkoutContext);
@@ -97,14 +97,6 @@ export default function AddWorkoutForm() {
             </div>
           ))}
           <button type="button" onClick={() => addSet(exerciseIndex)} className="add-set-button">Add Set</button>
-          <input
-            type="text"
-            name="restTime"
-            value={exercise.restTime}
-            onChange={(e) => handleExerciseChange(e, exerciseIndex)}
-            placeholder="Rest Time"
-            className="input-field"
-          />
           <input
             type="text"
             name="notes"

@@ -12,7 +12,7 @@ const workoutSchema = new Schema({
             required: true,
         },
         sets: [{
-            setCount:{
+            setCount: {
                 type: Number,
                 required: true
             },
@@ -25,21 +25,15 @@ const workoutSchema = new Schema({
                 required: true,
             },
         }],
-        restTime: {
-            type: String,
-            required: true,
-        },
         notes: {
             type: String,
         },
-        }],
-            userId: {
-                type: Schema.Types.ObjectId,
-                ref: 'User',
-                 required: true
-            }
+    }],
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 });
 
-module.exports= mongoose.model('Workout', workoutSchema);
-
- 
+module.exports = mongoose.model('Workout', workoutSchema);
