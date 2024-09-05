@@ -11,6 +11,7 @@ export default defineConfig({
         target: 'https://gainztracker-uc6w.onrender.com',
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '')
       },
     },
       

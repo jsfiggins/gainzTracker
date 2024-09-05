@@ -22,7 +22,7 @@ async function connectToDb() {
 
 connectToDb();
 
-app.use('/api/auth/login', require('./routes/authRouter.js'));
+app.use('/api/auth', require('./routes/authRouter.js'));
 
 // Applying the express-jwt middleware to protect the '/api/main' routes
 app.use('/api/main', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }));
