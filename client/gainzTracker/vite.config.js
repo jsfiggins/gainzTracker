@@ -8,11 +8,12 @@ export default defineConfig({
     port: 4173,      // Ensure this matches the port Render expects (you can choose a different port if needed)
     proxy: {
       '/api': {
-        target: 'https://gainztracker-uc6w.onrender.com', // Ensure this is correct
+        target: 'https://gainztracker-uc6w.onrender.com',
         changeOrigin: true,
-        secure: false, // Add this if using self-signed certificates
-        rewrite: (path) => path.replace(/^\/api/, '') // Adjust based on your API routes
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '')
       },
-    },    
+    },
+      
   },
 });
