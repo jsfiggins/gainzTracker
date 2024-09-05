@@ -8,7 +8,7 @@ export default defineConfig({
     port: 4173,      // Ensure this matches the port Render expects (you can choose a different port if needed)
     proxy: {
       '/api': {
-        target: 'https://gainztracker-uc6w.onrender.com/', // Update this to match your backend server's address
+        target: 'http://localhost:7000', // Update this to match your backend server's address
         changeOrigin: true,
       },
     },

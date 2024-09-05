@@ -4,11 +4,11 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const { expressjwt } = require('express-jwt');
 require('dotenv').config();
-const path = require ('path');
+const path = require('path');
 
-app.use(express.json()); // looks for a request body then turns it into 'req.body'
-app.use(morgan('dev')); // Logs requests to the console 
-app.use(express.static(path.join(__dirname,"client","dist")))
+app.use(express.json());
+app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, "client", "dist")));
 
 async function connectToDb() {
     try {
@@ -22,17 +22,25 @@ async function connectToDb() {
 
 connectToDb();
 
-
 app.use('/api/auth', require('./routes/authRouter.js'));
+
+// Applying the express-jwt middleware to protect the '/api/main' routes
 app.use('/api/main', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }));
+
+// Workout routes - only accessible if authenticated
 app.use('/api/main/workout', require('./routes/workoutRouter.js'));
 
+// Error handling middleware - handling specific error status codes
 app.use((err, req, res, next) => {
-    console.error(err);
-    res.status(500).send({ errMsg: err.message });
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).send({ errMsg: 'Invalid token' });
+    } else {
+        console.error(err);
+        res.status(err.status || 500).send({ errMsg: err.message });
+    }
 });
 
-app.get("*",(req,res)=> res.sendFile(path.join(__dirname,"client","dist","index.html")))
+app.get("*", (req, res) => res.sendFile(path.join(__dirname, "client", "dist", "index.html")));
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);

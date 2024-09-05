@@ -54,7 +54,8 @@ userSchema.methods.withoutPassword = function (){
     const user = this.toObject()
     delete user.password
     return user
-}
+} 
+
 
 
 

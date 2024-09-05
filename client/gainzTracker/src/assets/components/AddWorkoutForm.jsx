@@ -4,7 +4,9 @@ import { WorkoutContext } from '../context/WorkoutContext';
 export default function AddWorkoutForm() {
   const initialExercise = { name: '', sets: [{ setCount: '', reps: '', weight: '' }], notes: '' };
   const initialWorkout = { date: '', exercises: [initialExercise] };
+  
   const [workout, setWorkout] = useState(initialWorkout);
+  const [successMessage, setSuccessMessage] = useState('');  // Success message state
   const { addWorkout } = useContext(WorkoutContext);
 
   function handleExerciseChange(e, exerciseIndex, setIndex) {
@@ -34,8 +36,15 @@ export default function AddWorkoutForm() {
   function handleSubmit(e) {
     e.preventDefault();
     addWorkout({ ...workout, date: new Date().toISOString() });
-    setWorkout(initialWorkout); // Reset form after submission
+    setWorkout(initialWorkout);  // Reset form after submission
+    setSuccessMessage('Workout added successfully!');
+    
+    // Remove success message after 3 seconds
+    setTimeout(() => {
+      setSuccessMessage('');
+    }, 3500);
   }
+  
 
   function addExercise() {
     setWorkout(prevWorkout => ({
@@ -107,8 +116,12 @@ export default function AddWorkoutForm() {
           />
         </div>
       ))}
+      <br />
       <button type="button" onClick={addExercise} className="add-exercise-button">Add Exercise</button>
       <button type="submit" className="submit-button">Add Workout</button>
+
+      {/* Success Message */}
+      {successMessage && <p className="success-message">{successMessage}</p>}
     </form>
   );
 }
