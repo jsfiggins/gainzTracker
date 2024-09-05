@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0', // Bind to all network interfaces
-    port: 4173,      // Ensure this matches the port Render expects (you can choose a different port if needed)
+    port: 7000,      // Ensure this matches the port Render expects (you can choose a different port if needed)
     proxy: {
       '/api': {
         target: 'https://gainztracker-uc6w.onrender.com',
