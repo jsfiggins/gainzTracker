@@ -3,14 +3,15 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  root: './', // This tells Vite to use the current directory as the root
+  root: 'client/gainzTracker', // Use this directory as the root for Vite
   build: {
-    outDir: 'dist' // Specify your build output directory
+    outDir: '../dist', // Build output directory (relative to root)
+    emptyOutDir: true // Clean output directory before building
   },
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:7000', // Backend server
+        target: 'http://localhost:7000', // Adjust if needed
         changeOrigin: true,
       }
     }
