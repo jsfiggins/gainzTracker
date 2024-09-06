@@ -118,7 +118,7 @@ export default function AddWorkoutForm() {
       ))}
       <br />
       <button type="button" onClick={addExercise} className="add-exercise-button">Add Exercise</button>
-      <button type="submit" className="submit-button">Add Workout</button>
+      <button type="submit" className="submit-button">Track Workout</button>
 
       {/* Success Message */}
       {successMessage && <p className="success-message">{successMessage}</p>}

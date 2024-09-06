@@ -310,6 +310,16 @@ button:hover {
 .workout-card button:hover {
   background-color: #c0392b;
 }
+.placeholder-container {
+  display:grid;
+  justify-content: center;
+  align-items: center;
+}
+.placeholder-message{
+  color:yellow;
+  margin-top:50%;
+  height:25vh;
+}
 
 /* Navbar Styling */
 .navbar {

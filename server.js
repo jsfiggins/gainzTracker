@@ -8,6 +8,8 @@ const path = require('path');
 
 app.use(express.json());
 app.use(morgan('dev'));
+
+
 app.use(express.static(path.join(__dirname, "client", "dist")));
 
 async function connectToDb() {

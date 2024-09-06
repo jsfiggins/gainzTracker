@@ -22,7 +22,7 @@ authRouter.post('/signup', async (req, res, next) => {
         res.status(500)
         return next(err)
     }
-}) 
+})
 
 
 authRouter.post('/login', async (req, res, next) => {
