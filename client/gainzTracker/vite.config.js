@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig(({ mode }) => {
   return {
@@ -13,7 +14,7 @@ export default defineConfig(({ mode }) => {
       } : undefined, // No proxy needed in production
     },
     build: {
-      outDir: 'client/gainzTracker/dist', // Ensure the build output goes to the correct folder
+      outDir: path.resolve(__dirname, 'client', 'gainzTracker', 'dist'), // Ensure the build output goes to the correct folder
     }
   };
 });
