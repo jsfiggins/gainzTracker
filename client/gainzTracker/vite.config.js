@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
       } : undefined, // No proxy needed in production
     },
     build: {
-      outDir: 'client/dist', // Ensure the build output goes to the correct folder
+      outDir: 'client/gainzTracker/dist', // Ensure the build output goes to the correct folder
     }
   };
 });
