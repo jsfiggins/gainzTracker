@@ -9,8 +9,8 @@ const path = require('path');
 app.use(express.json());
 app.use(morgan('dev'));
 
-
-app.use(express.static(path.join(__dirname, "client", "dist")));
+// Serving static files from the correct dist directory
+app.use(express.static(path.join(__dirname, "client", "gainzTracker", "dist")));
 
 async function connectToDb() {
     try {
@@ -42,9 +42,9 @@ app.use((err, req, res, next) => {
     }
 });
 
-app.get("*", (req, res) => res.sendFile(path.join(__dirname, "client", "dist", "index.html")));
+// Serve index.html from the correct dist directory for all other routes
+app.get("*", (req, res) => res.sendFile(path.join(__dirname, "client", "gainzTracker", "dist", "index.html")));
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
- 
