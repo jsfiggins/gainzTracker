@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
-    root: 'client/gainzTracker', // Set root to the folder containing index.html and source files
+    root: 'client/gainzTracker', // This should point to the folder containing index.html
     server: {
       proxy: mode === 'development' ? {
         '/api': {
@@ -14,7 +14,10 @@ export default defineConfig(({ mode }) => {
       } : undefined, // No proxy needed in production
     },
     build: {
-      outDir: 'dist', // Output will be client/gainzTracker/dist
+      outDir: 'dist', // Output directory for the build files
+      rollupOptions: {
+        input: 'client/gainzTracker/index.html' // Ensure Rollup knows where the entry point is
+      }
     }
   };
 });
