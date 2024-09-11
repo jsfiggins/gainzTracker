@@ -5,17 +5,16 @@ import path from 'path';
 export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
-    root: path.resolve(__dirname, 'client/gainzTracker/src'), // Adjust to where your index.html is located
     server: {
       proxy: mode === 'development' ? {
         '/api': {
-          target: 'http://localhost:7000',
+          target: 'http://localhost:7000', // Backend server during development
           changeOrigin: true,
         }
-      } : undefined,
+      } : undefined, // No proxy needed in production
     },
     build: {
-      outDir: path.resolve(__dirname, 'client/gainzTracker/dist'), // Ensure the build output goes to the correct folder
+      outDir: path.resolve(__dirname, 'client', 'gainzTracker', 'dist'), // Ensure the build output goes to the correct folder
     }
   };
 });
