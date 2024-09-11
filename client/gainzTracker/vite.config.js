@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 
 export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
+    root: 'client/gainzTracker', // Use a simple relative path to the root folder
     server: {
       proxy: mode === 'development' ? {
         '/api': {
@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
       } : undefined, // No proxy needed in production
     },
     build: {
-      outDir: path.resolve(__dirname, 'client', 'gainzTracker', 'dist'), // Ensure the build output goes to the correct folder
+      outDir: 'dist', // Output will be client/gainzTracker/dist
     }
   };
 });
