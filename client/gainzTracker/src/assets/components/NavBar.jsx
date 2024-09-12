@@ -9,6 +9,12 @@ function Navbar(props) {
     setIsNavbarOpen(!isNavbarOpen);
   };
 
+  const closeNavbar = () => {
+    if (isNavbarOpen) {
+      setIsNavbarOpen(false);
+    }
+  };
+
   return (
     <div id="navbar" className={`navbar ${isNavbarOpen ? 'open' : ''}`}>
       {/* Button to toggle the navbar */}
@@ -16,17 +22,17 @@ function Navbar(props) {
         ☰
       </button>
       <div className={`navbar-links ${isNavbarOpen ? 'open' : ''}`}>
-        <Link to="/home">
+        <Link to="/home" onClick={closeNavbar}>
           <button className="navbar-button">Home</button>
         </Link>
-        <Link to="/log">
+        <Link to="/log" onClick={closeNavbar}>
           <button className="navbar-button">View Past Workouts</button>
         </Link>
-        <Link to="/add">
+        <Link to="/add" onClick={closeNavbar}>
           <button className="navbar-button">New Entry</button>
         </Link>
-        <Link to="/">
-          <button className="navbar-button" onClick={logout}>Logout</button>
+        <Link to="/" onClick={() => { logout(); closeNavbar(); }}>
+          <button className="navbar-button">Logout</button>
         </Link>
       </div>
     </div>
@@ -34,3 +40,4 @@ function Navbar(props) {
 }
 
 export default Navbar;
+

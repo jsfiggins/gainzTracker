@@ -117,7 +117,7 @@ export default function AddWorkoutForm() {
         </div>
       ))}
       <br />
-      <button type="button" onClick={addExercise} className="add-exercise-button">Add Exercise</button>
+      <button type="button" onClick={addExercise} className="add-exercise-button"> Another Exercise Type </button>
       <button type="submit" className="submit-button">Track Workout</button>
 
       {/* Success Message */}
